@@ -1,0 +1,59 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0 5px 18px;
+  position: relative;
+}
+
+/* Circuit connector */
+.row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 12px;
+  height: 1px;
+  background: rgba(255,175,0,0.1);
+}
+
+/* Diamond junction */
+.row::after {
+  content: '';
+  position: absolute;
+  left: -2.5px;
+  top: calc(50% - 2.5px);
+  width: 5px;
+  height: 5px;
+  background: var(--glass-bg);
+  border: 1px solid rgba(255,175,0,0.2);
+  transform: rotate(45deg);
+}
+
+.name {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  flex: 1;
+}
+
+.dots {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.dot.orange { background: var(--orange); box-shadow: 0 0 4px rgba(255,175,0,0.5); }
+.dot.blue   { background: var(--blue);   box-shadow: 0 0 4px rgba(95,215,255,0.4); }
+.dot.purple { background: var(--purple); box-shadow: 0 0 4px rgba(175,135,255,0.4); }
+.dot.off    { background: transparent; border: 1px solid var(--dim2); }

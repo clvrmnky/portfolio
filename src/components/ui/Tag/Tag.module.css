@@ -1,0 +1,16 @@
+.tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border: 1px solid var(--b1);
+  padding: 3px 7px;
+  transition: all 0.15s;
+  display: inline-block;
+}
+
+.tag.orange { color: var(--orange); border-color: rgba(255,175,0,0.18); }
+.tag.blue   { color: var(--blue);   border-color: rgba(95,215,255,0.18); }
+.tag.purple { color: var(--purple); border-color: rgba(175,135,255,0.18); }
+.tag.pink   { color: var(--pink);   border-color: rgba(255,95,175,0.18); }

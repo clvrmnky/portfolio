@@ -1,0 +1,176 @@
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 44px;
+  background: rgba(5,5,13,0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--b1);
+  opacity: 0;
+  animation: fadeIn 0.5s ease 0.2s forwards;
+}
+
+/* Orange-to-purple gradient accent line at top */
+.nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--orange) 20%, var(--purple) 60%, transparent 95%);
+  opacity: 0.35;
+}
+
+/* Dashed bottom rule */
+.nav::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 44px;
+  right: 44px;
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 62px,
+    var(--b2) 62px, var(--b2) 64px
+  );
+}
+
+/* Scroll progress bar */
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--orange);
+  box-shadow: 0 0 8px var(--go);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.05s linear;
+  z-index: 1;
+}
+
+/* ── Brand ── */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.lcarsLines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lcarsLine {
+  display: block;
+  height: 1px;
+  background: var(--orange);
+}
+
+.navName {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bright);
+}
+
+.navSlash {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--dim);
+}
+
+/* ── Links ── */
+.links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0 auto;
+}
+
+.link {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color 0.15s;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--orange);
+  box-shadow: 0 0 8px var(--go);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s cubic-bezier(0.16,1,0.3,1);
+}
+
+.link:hover { color: var(--bright); }
+.link:hover::after,
+.link.active::after { transform: scaleX(1); }
+.link.active { color: var(--text); }
+
+/* ── System indicator ── */
+.sys {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.sysDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 8px var(--gb);
+  animation: blinkPulse 3s ease-in-out infinite;
+}
+
+.sysTag {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border: 1px solid var(--b1);
+  padding: 3px 8px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 20px;
+  }
+  .links {
+    display: none;
+  }
+  .navSlash {
+    display: none;
+  }
+}

@@ -1,0 +1,54 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0 4px 18px;
+  position: relative;
+}
+
+/* Horizontal connector */
+.row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 12px;
+  height: 1px;
+  background: rgba(255,175,0,0.15);
+}
+
+/* Diamond junction */
+.row::after {
+  content: '';
+  position: absolute;
+  left: -2.5px;
+  top: calc(50% - 2.5px);
+  width: 5px;
+  height: 5px;
+  background: var(--glass-bg);
+  border: 1px solid rgba(255,175,0,0.3);
+  transform: rotate(45deg);
+}
+
+.key {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  flex: 0 0 auto;
+}
+
+.value {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--blue);
+  text-align: right;
+}
+
+/* Value variants */
+.value.orange { color: var(--orange); font-size: 20px; line-height: 1; }
+.value.text   { font-size: 9px; color: var(--text); font-weight: 400; }
+.value.purple { font-size: 8px; color: var(--purple); font-weight: 400; }
+.value.dim    { font-size: 8px; color: var(--dim); font-weight: 400; }

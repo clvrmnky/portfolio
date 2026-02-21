@@ -1,0 +1,57 @@
+.btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scan sweep on hover */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%);
+  transition: left 0.35s ease;
+}
+
+.btn:hover::before {
+  left: 200%;
+}
+
+/* Primary */
+.primary {
+  color: var(--bg);
+  background: var(--orange);
+  border: none;
+  padding: 12px 28px;
+  box-shadow: 0 0 28px var(--go);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+
+.primary:hover {
+  background: var(--bright);
+  box-shadow: 0 0 44px var(--go);
+}
+
+/* Ghost */
+.ghost {
+  color: var(--dim);
+  background: transparent;
+  border: 1px solid var(--b2);
+  padding: 12px 28px;
+}
+
+.ghost:hover {
+  color: var(--text);
+  border-color: var(--dim);
+}

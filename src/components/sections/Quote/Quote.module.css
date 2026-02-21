@@ -1,0 +1,120 @@
+/* ═══════════════════════════════════════════
+   QUOTE SECTION
+═══════════════════════════════════════════ */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 80px 44px;
+  border-top: 1px solid var(--b1);
+  display: grid;
+  grid-template-columns: 140px 1fr 160px;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Left decorative column */
+.deco {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-end;
+}
+
+.decoLine {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--b2));
+}
+
+.decoLabel {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dim2);
+  margin-top: 10px;
+}
+
+/* Quote content */
+.content blockquote {
+  font-family: var(--sans);
+  font-size: clamp(17px, 1.9vw, 23px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--bright);
+  border-left: 1px solid var(--orange);
+  padding-left: 24px;
+  box-shadow: -8px 0 24px rgba(255,175,0,0.04);
+}
+
+.attr {
+  font-family: var(--mono);
+  font-size: 8px;
+  color: var(--dim);
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+  margin-top: 16px;
+  padding-left: 24px;
+}
+
+.attrName {
+  display: block;
+  color: var(--purple);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Stat column */
+.stat {
+  text-align: center;
+}
+
+.statNum {
+  font-family: var(--mono);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--orange);
+  line-height: 1;
+  text-shadow: 0 0 36px var(--go);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+}
+
+.statNumValue {
+  /* count-up target */
+}
+
+.statSuffix {
+  font-size: 0.45em;
+  color: var(--purple);
+}
+
+.statLabel {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 20px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .deco {
+    display: none;
+  }
+  .stat {
+    text-align: left;
+  }
+  .statNum {
+    justify-content: flex-start;
+  }
+}
