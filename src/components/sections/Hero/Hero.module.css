@@ -377,3 +377,9 @@
     flex-wrap: wrap;
   }
 }
+
+/* ── Keyframes (must live in same module file for CSS Modules scoping) ── */
+@keyframes fadeIn  { to { opacity: 1; } }
+@keyframes nameIn  { to { opacity: 1; transform: translateY(0); } }
+@keyframes colIn   { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes scrollFade { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }

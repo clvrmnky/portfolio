@@ -47,3 +47,6 @@
   width: 1px;
   background: linear-gradient(180deg, rgba(255,175,0,0.12), rgba(255,175,0,0.04), transparent);
 }
+
+/* ── Keyframes ── */
+@keyframes glassSweep { from { left: -100%; } to { left: 200%; } }

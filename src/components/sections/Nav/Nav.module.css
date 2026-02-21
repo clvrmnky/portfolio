@@ -174,3 +174,7 @@
     display: none;
   }
 }
+
+/* ── Keyframes ── */
+@keyframes fadeIn      { to { opacity: 1; } }
+@keyframes blinkPulse  { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
