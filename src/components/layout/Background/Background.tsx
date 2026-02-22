@@ -1,3 +1,4 @@
+import DataStream from './DataStream'
 import styles from './Background.module.css'
 
 export default function Background() {
@@ -6,6 +7,7 @@ export default function Background() {
       <div className={styles.bgGrid} />
       <div className={styles.bgAmbient} />
       <div className={styles.bgNoise} />
+      <DataStream />
 
       <div className={styles.particles}>
         <div className={`${styles.p} ${styles.p1}`} />
