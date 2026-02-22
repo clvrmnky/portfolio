@@ -1,0 +1,19 @@
+/* ══ MetricReadout — assembled ═══════════════════════════
+   Framed stat value + label. Not a progress bar.
+══════════════════════════════════════════════════════════ */
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: rgba(200, 230, 255, 0.4);
+  max-width: 80px;
+  line-height: 1.5;
+}
