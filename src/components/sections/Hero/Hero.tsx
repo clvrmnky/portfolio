@@ -84,7 +84,7 @@ export default function Hero() {
 
         {/* Glass data column */}
         <div ref={colRef} className={styles.dataCol}>
-          <GlassPanel spine id="dataCol">
+          <GlassPanel spine id="dataCol" scanDelay="0s">
           <div className={styles.colInner}>
             <div className={styles.colHeader}>
               <span className={styles.colTitle}>Operator Profile</span>

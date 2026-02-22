@@ -42,11 +42,12 @@ export default function Work() {
       </p>
 
       <div className={styles.grid} ref={gridRef}>
-        {caseStudies.map((cs) => (
+        {caseStudies.map((cs, index) => (
           <div
             key={cs.id}
             className={`${styles.card} ${cs.featured ? styles.featured : ''}`}
           >
+            <div className={styles.cardScanline} style={{ '--card-scan-delay': `${index * 1.5}s` } as React.CSSProperties} />
             <div className={styles.cardMeta}>
               <span className={styles.cardNum}>{cs.number}</span>
               <div className={styles.cardRule} />

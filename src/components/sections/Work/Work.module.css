@@ -218,6 +218,31 @@
   transform: translateX(4px);
 }
 
+@keyframes cardScan {
+  0%        { top: -2px; opacity: 0; }
+  2%        { opacity: 1; }
+  25%       { top: 100%; opacity: 0; }
+  100%      { top: 100%; opacity: 0; }
+}
+
+.cardScanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,175,0,0.07) 30%,
+    rgba(255,175,0,0.12) 50%,
+    rgba(255,175,0,0.07) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: cardScan 10s linear infinite;
+  animation-delay: var(--card-scan-delay, 0s);
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .grid {

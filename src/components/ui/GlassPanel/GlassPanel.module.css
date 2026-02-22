@@ -94,3 +94,29 @@
 
 /* ── Keyframes ── */
 @keyframes glassSweep { from { left: -100%; } to { left: 200%; } }
+
+/* Panel scanline — loops every 10s, sweeps for 2.5s, pauses 7.5s */
+@keyframes panelScan {
+  0%        { top: -2px; opacity: 0; }
+  2%        { opacity: 1; }
+  25%       { top: 100%; opacity: 0; }
+  100%      { top: 100%; opacity: 0; }
+}
+
+.scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,175,0,0.08) 20%,
+    rgba(255,175,0,0.14) 50%,
+    rgba(255,175,0,0.08) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  animation: panelScan 10s linear infinite;
+  animation-delay: var(--scan-delay, 0s);
+}
