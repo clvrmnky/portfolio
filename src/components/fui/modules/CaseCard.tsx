@@ -20,8 +20,14 @@ export function CaseCard({ cs, revealDelay = 0 }: Props) {
   useEffect(() => {
     const el = cardRef.current
     if (!el) return
-    const { width, height } = el.getBoundingClientRect()
-    setDims({ w: width, h: height })
+    const measure = () => {
+      const { width, height } = el.getBoundingClientRect()
+      if (width > 0 && height > 0) setDims({ w: width, h: height })
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    ro.observe(el)
+    return () => ro.disconnect()
   }, [])
 
   return (

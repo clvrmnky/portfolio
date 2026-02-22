@@ -13,9 +13,10 @@
   padding: 20px 22px 18px;
   display: flex;
   flex-direction: column;
-  gap: 0;
   overflow: hidden;
   cursor: pointer;
+  animation: cardReveal 0.44s ease-out both;
+  animation-delay: var(--reveal-delay, 0ms);
   transition:
     border-color 0.2s ease,
     background 0.2s ease,
@@ -126,4 +127,16 @@
 
 .card:hover .cta {
   color: rgba(0, 212, 255, 0.75);
+}
+
+/* ── Card reveal animation ──────────────────────────────────────── */
+@keyframes cardReveal {
+  /* sharp triple-pulse — matches flickerMed from Hero */
+  0%   { opacity: 0;    }
+  7%   { opacity: 0.9;  }
+  13%  { opacity: 0;    }
+  22%  { opacity: 0.85; }
+  28%  { opacity: 0;    }
+  38%  { opacity: 1;    }
+  100% { opacity: 1;    }
 }
