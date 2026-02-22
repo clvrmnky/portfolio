@@ -1,3 +1,9 @@
+/* ═══════════════════════════════════════════════════════════
+   IDENTITY ZONE — FUI instrument module stack
+   Name module: large typography + depth-layered frame overlay
+   3 content zones: Role, Signal, Action — each framed + traced
+═══════════════════════════════════════════════════════════ */
+
 /* ── BOOT keyframes ── */
 @keyframes zoneOutlineIn {
   from { opacity: 0; }
@@ -9,13 +15,54 @@
   to   { opacity: 1; transform: scale(1); }
 }
 
-/* ── Zone container ── */
+@keyframes nameContentIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes frameFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes zoneClipIn {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+/* ── IDLE keyframes ── */
+@keyframes ledBlink {
+  0%, 100% { opacity: 1; }
+  45%, 55% { opacity: 0.15; }
+}
+
+@keyframes nameBreathe {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(0,212,255,0.06); }
+  50%       { box-shadow: 0 0 24px rgba(0,212,255,0.07), 0 0 0 1px rgba(0,212,255,0.18); }
+}
+
+/* Traveling trace — horizontal left→right */
+@keyframes traceH {
+  from { background-position: -80px 0; }
+  to   { background-position: calc(100% + 80px) 0; }
+}
+
+/* Traveling trace — vertical top→bottom */
+@keyframes traceV {
+  from { background-position: 0 -60px; }
+  to   { background-position: 0 calc(100% + 60px); }
+}
+
+/* Traveling trace — horizontal right→left */
+@keyframes traceHL {
+  from { background-position: calc(100% + 80px) 0; }
+  to   { background-position: -80px 0; }
+}
+
+/* ── Outer zone container ── */
 .zone {
   position: relative;
-  /* Angular bottom-right corner clip */
   clip-path: polygon(0 0, 100% 0, 100% 90%, calc(100% - 28px) 100%, 0 100%);
-
-  /* BOOT: zone outline materializes */
   animation: zoneOutlineIn 0.25s ease 0.52s both;
 }
 
@@ -28,7 +75,7 @@
   z-index: 10;
   pointer-events: none;
   animation: bracketPlace 0.2s ease 0.6s both;
-  transition: width 0.15s, height 0.15s, opacity 0.15s;
+  transition: width 0.15s, height 0.15s, border-color 0.15s;
 }
 
 .bracketTL {
@@ -45,16 +92,14 @@
   border-left: 1.5px solid rgba(0,212,255,0.4);
 }
 
-/* ACTIVE: brackets tighten on hover */
 .zone:hover .bracketTL,
 .zone:hover .bracketBL {
   width: 22px;
   height: 22px;
-  opacity: 1;
   border-color: rgba(0,212,255,0.7);
 }
 
-/* Ambient zone label — implied larger system */
+/* Ambient zone label */
 .ambientLabel {
   position: absolute;
   top: 0;
@@ -70,33 +115,21 @@
   z-index: 0;
 }
 
-.content {
+/* ══════════════════════════════
+   NAME MODULE
+══════════════════════════════ */
+
+.nameModule {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+/* Text layer — behind the frame */
+.nameContent {
   position: relative;
   z-index: 1;
-  /* Content opacity managed by GSAP on [data-boot] items */
-}
-
-/* ── LAYER 2: Identity content ── */
-
-.sysId {
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--ice);
-  opacity: 0.35;
-  margin: 0 0 24px 0;
-}
-
-.sysId::before {
-  content: '// ';
-  color: var(--cyan);
-  opacity: 0.5;
-}
-
-/* Name — hierarchy through BRIGHTNESS */
-.heroName {
-  margin-bottom: 20px;
+  padding: 20px 20px 36px;
+  animation: nameContentIn 0.5s ease 0.7s both;
 }
 
 /* "Justin" — recedes, it's a label */
@@ -120,70 +153,243 @@
   letter-spacing: -0.03em;
   line-height: 0.92;
   color: var(--bright);
-  /* Chromatic aberration — light through glass */
   text-shadow:
     -1.5px 0 0 rgba(0,212,255,0.25),
     1.5px 0 0 rgba(123,255,237,0.18),
     0 0 40px rgba(0,212,255,0.08);
 }
 
-/* Horizontal rule */
-.hRule {
+/* Frame overlay — floats in front of the name */
+.nameFrame {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(0,212,255,0.04);
+  border: 1px solid rgba(0,212,255,0.10);
+  pointer-events: none;
+  /* BOOT (opacity) then IDLE breathe (box-shadow) — different properties, no conflict */
+  animation:
+    frameFadeIn 0.3s ease 0.62s both,
+    nameBreathe 6s ease-in-out 2s infinite;
+}
+
+/* Corner marks on the name frame */
+.nameFrameCornerTL,
+.nameFrameCornerTR,
+.nameFrameCornerBL,
+.nameFrameCornerBR {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+}
+
+.nameFrameCornerTL {
+  top: -1px; left: -1px;
+  border-top: 1.5px solid rgba(0,212,255,0.55);
+  border-left: 1.5px solid rgba(0,212,255,0.55);
+}
+
+.nameFrameCornerTR {
+  top: -1px; right: -1px;
+  border-top: 1.5px solid rgba(0,212,255,0.55);
+  border-right: 1.5px solid rgba(0,212,255,0.55);
+}
+
+.nameFrameCornerBL {
+  bottom: -1px; left: -1px;
+  border-bottom: 1.5px solid rgba(0,212,255,0.55);
+  border-left: 1.5px solid rgba(0,212,255,0.55);
+}
+
+.nameFrameCornerBR {
+  bottom: -1px; right: -1px;
+  border-bottom: 1.5px solid rgba(0,212,255,0.55);
+  border-right: 1.5px solid rgba(0,212,255,0.55);
+}
+
+/* Status row — pinned to bottom-left of name frame */
+.nameFrameStatus {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
+  gap: 7px;
 }
 
-.hRuleLine {
-  height: 1px;
-  width: 160px;
-  background: linear-gradient(90deg, var(--cyan), transparent);
-  opacity: 0.35;
-}
-
-.hRuleDot {
+.nameLed {
   width: 4px;
   height: 4px;
   background: var(--cyan);
-  transform: rotate(45deg);
-  box-shadow: 0 0 8px rgba(0,212,255,0.6);
+  box-shadow: 0 0 6px rgba(0,212,255,0.7);
+  flex-shrink: 0;
+  animation: ledBlink 2.2s ease-in-out infinite;
 }
 
-.hRuleVal {
+.nameStatusText {
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 7px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--ice);
   opacity: 0.3;
-  letter-spacing: 0.14em;
 }
 
-/* Role — monospace, tracked, teal */
+/* ══════════════════════════════
+   CONTENT ZONES
+══════════════════════════════ */
+
+.zones {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Individual zone module */
+.zoneModule {
+  position: relative;
+  background: rgba(0,212,255,0.018);
+  border: 1px solid rgba(0,212,255,0.10);
+  overflow: hidden; /* clips traveling trace elements to zone bounds */
+  /* BOOT: clip-in from right */
+  animation: zoneClipIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+/* Stagger zone clip-ins */
+.zoneModule:nth-child(1) { animation-delay: 0.85s; }
+.zoneModule:nth-child(2) { animation-delay: 0.95s; }
+.zoneModule:nth-child(3) { animation-delay: 1.05s; }
+
+/* Zone header band */
+.zoneHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background: rgba(0,212,255,0.03);
+  border-bottom: 1px solid rgba(0,212,255,0.08);
+}
+
+/* Square LED in zone header */
+.zoneLed {
+  width: 4px;
+  height: 4px;
+  background: var(--cyan);
+  box-shadow: 0 0 5px rgba(0,212,255,0.7);
+  flex-shrink: 0;
+  animation: ledBlink 2s ease-in-out infinite;
+}
+
+/* Stagger LED blinks — never in sync across zones */
+.zoneModule:nth-child(1) .zoneLed { animation-delay: 0s; }
+.zoneModule:nth-child(2) .zoneLed { animation-delay: 0.75s; }
+.zoneModule:nth-child(3) .zoneLed { animation-delay: 1.5s; }
+
+.zoneId {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ice);
+  opacity: 0.3;
+}
+
+.zoneBody {
+  padding: 10px 12px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ══════════════════════════════
+   TRAVELING TRACE ELEMENTS
+   Each is absolute inside overflow:hidden zoneModule.
+   background-position animates a gradient hotspot along one edge.
+══════════════════════════════ */
+
+/* Zone 1: top edge, left→right, 3s */
+.traceH {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0,212,255,0.9) 50%,
+    transparent 100%
+  );
+  background-size: 80px 1px;
+  background-repeat: no-repeat;
+  animation: traceH 3s linear 1.2s infinite;
+}
+
+/* Zone 2: left edge, top→bottom, 4.5s */
+.traceV {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0,212,255,0.9) 50%,
+    transparent 100%
+  );
+  background-size: 1px 60px;
+  background-repeat: no-repeat;
+  animation: traceV 4.5s linear 0.6s infinite;
+}
+
+/* Zone 3: bottom edge, right→left, 2.5s */
+.traceHL {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0,212,255,0.9) 50%,
+    transparent 100%
+  );
+  background-size: 80px 1px;
+  background-repeat: no-repeat;
+  animation: traceHL 2.5s linear 2s infinite;
+}
+
+/* ══════════════════════════════
+   ZONE CONTENT STYLES
+══════════════════════════════ */
+
+/* Role text — monospace, tracked, teal */
 .heroRole {
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
+  font-size: 9px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--teal);
   opacity: 0.75;
-  line-height: 1.9;
-  margin: 0 0 28px 0;
+  line-height: 1.8;
+  margin: 0;
 }
 
 .roleSep {
   color: var(--ice);
   opacity: 0.2;
-  margin: 0 10px;
+  margin: 0 8px;
 }
 
-/* Tagline — content, luminous */
+/* Tagline — luminous, content hierarchy */
 .heroTagline {
   font-family: var(--sans);
   font-size: clamp(19px, 2.1vw, 24px);
   font-weight: 300;
   line-height: 1.35;
   color: var(--bright);
-  margin: 0 0 12px 0;
+  margin: 0 0 10px 0;
 }
 
 .heroTagline em {
@@ -192,21 +398,27 @@
   opacity: 0.9;
 }
 
-/* Body — important but secondary, sits at reading opacity */
+/* Divider between tagline and body */
+.signalDivider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,212,255,0.15), transparent);
+  margin-bottom: 10px;
+}
+
+/* Body — secondary, readable */
 .heroBody {
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.8;
   color: var(--ice);
   opacity: 0.55;
   max-width: 460px;
-  margin: 0 0 36px 0;
+  margin: 0;
 }
 
+/* CTA row */
 .ctas {
   display: flex;
   gap: 12px;
   align-items: center;
 }
-
-/* No keyframes needed — GSAP handles content BOOT */
