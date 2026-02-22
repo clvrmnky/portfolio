@@ -1,0 +1,31 @@
+/* ══ RecordHeader — assembled ═══════════════════════════
+   Case record header strip: tag · status · category · number
+══════════════════════════════════════════════════════════ */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.right {
+  flex-shrink: 0;
+}
+
+.category {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: rgba(200, 230, 255, 0.35);
+  white-space: nowrap;
+}
