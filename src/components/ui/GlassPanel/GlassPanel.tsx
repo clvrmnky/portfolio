@@ -1,3 +1,4 @@
+import { useInitSequence } from '../../../hooks/useInitSequence'
 import styles from './GlassPanel.module.css'
 
 interface GlassPanelProps {
@@ -5,12 +6,26 @@ interface GlassPanelProps {
   className?: string
   id?: string
   spine?: boolean
-  scanDelay?: string   // e.g. '0s', '3s', '6s'
+  scanDelay?: string
+  initOnScroll?: boolean
 }
 
-export default function GlassPanel({ children, className = '', id, spine = false, scanDelay = '0s' }: GlassPanelProps) {
+export default function GlassPanel({
+  children,
+  className = '',
+  id,
+  spine = false,
+  scanDelay = '0s',
+  initOnScroll = false,
+}: GlassPanelProps) {
+  const initRef = useInitSequence()
+
   return (
-    <div className={`${styles.panel} ${className}`} id={id}>
+    <div
+      className={`${styles.panel} ${className}`}
+      id={id}
+      ref={initOnScroll ? (initRef as React.RefObject<HTMLDivElement>) : undefined}
+    >
       <div className={styles.shimmer} />
       <div
         className={styles.scanline}

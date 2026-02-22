@@ -209,8 +209,6 @@
   margin-left: 24px;
   margin-top: 8px;
   align-self: center;
-  opacity: 0;
-  animation: colIn 0.7s cubic-bezier(0.16,1,0.3,1) 1.0s forwards;
 }
 
 /* Inner content with padding — glass surface is the outer */
@@ -381,5 +379,4 @@
 /* ── Keyframes (must live in same module file for CSS Modules scoping) ── */
 @keyframes fadeIn  { to { opacity: 1; } }
 @keyframes nameIn  { to { opacity: 1; transform: translateY(0); } }
-@keyframes colIn   { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes scrollFade { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
