@@ -33,6 +33,21 @@
   --gb: rgba(95,215,255,0.22);
   --gp: rgba(175,135,255,0.18);
 
+  /* ── Phase 2: Jarvis blue palette (Hero) ── */
+  --cyan:    #00D4FF;   /* primary — data values, key readouts, active states */
+  --teal:    #7BFFED;   /* secondary data, connective chrome */
+  --ice:     #C8E6FF;   /* labels, chrome text, tertiary */
+
+  /* Cyan glow values */
+  --gc:  rgba(0,212,255,0.28);
+  --gt:  rgba(123,255,237,0.18);
+  --gi:  rgba(200,230,255,0.12);
+
+  /* Instrument panel surface */
+  --inst-bg:     rgba(3,4,12,0.97);
+  --inst-border: rgba(0,212,255,0.10);
+  --inst-band:   rgba(0,212,255,0.055);
+
   /* Typography */
   --mono: 'IBM Plex Mono', monospace;
   --sans: 'IBM Plex Sans', sans-serif;
