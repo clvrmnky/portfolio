@@ -1,4 +1,5 @@
 import { useInitSequence } from '../../../hooks/useInitSequence'
+import CircuitTraces from './CircuitTraces'
 import styles from './GlassPanel.module.css'
 
 interface GlassPanelProps {
@@ -32,6 +33,7 @@ export default function GlassPanel({
         style={{ '--scan-delay': scanDelay } as React.CSSProperties}
       />
       {spine && <div className={styles.spine} />}
+      {spine && <CircuitTraces groupCount={4} />}
       {children}
     </div>
   )
