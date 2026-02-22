@@ -9,6 +9,11 @@ export interface CaseStudy {
   ctaHref: string
   featured?: boolean
   category: string
+  status: 'active' | 'standby' | 'offline'
+  metric: {
+    label: string
+    displayValue: string
+  }
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -23,6 +28,11 @@ export const caseStudies: CaseStudy[] = [
     ctaHref: '#',
     featured: true,
     category: 'Evidence UX',
+    status: 'active',
+    metric: {
+      label: 'ACCURACY LIFT',
+      displayValue: '+33%',
+    },
   },
   {
     id: 'ai-reasoning',
@@ -34,6 +44,11 @@ export const caseStudies: CaseStudy[] = [
     ctaLabel: 'View case study',
     ctaHref: '#',
     category: 'AI Reasoning',
+    status: 'active',
+    metric: {
+      label: 'ARCHITECTURE DEPTH',
+      displayValue: '×4',
+    },
   },
   {
     id: 'agree-rate',
@@ -45,5 +60,10 @@ export const caseStudies: CaseStudy[] = [
     ctaLabel: 'View case study',
     ctaHref: '#',
     category: 'Strategy',
+    status: 'standby',
+    metric: {
+      label: 'HEALTH SYSTEMS',
+      displayValue: '×3',
+    },
   },
 ]
