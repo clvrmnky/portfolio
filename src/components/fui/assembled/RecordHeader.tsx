@@ -1,4 +1,3 @@
-import React from 'react'
 import { PanelTag } from './PanelTag'
 import { StatusIndicator } from './StatusIndicator'
 import { DiamondMark } from '../primitives/DiamondMark'

@@ -38,8 +38,6 @@ import {
   SummaryModule,
   CapabilityIndex,
   OperatorProfile,
-  RecordHeader,
-  MetricReadout,
   CaseCard,
 } from '../components/fui'
 import { caseStudies } from '../data/caseStudies'

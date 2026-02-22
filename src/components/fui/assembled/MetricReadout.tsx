@@ -1,4 +1,3 @@
-import React from 'react'
 import { LargeReadout } from './LargeReadout'
 import styles from './MetricReadout.module.css'
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { caseStudies } from '../../../data/caseStudies'
 import { CaseCard } from '../../fui/modules/CaseCard'
 import {
