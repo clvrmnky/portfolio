@@ -202,84 +202,13 @@
   animation: fadeIn 0.4s ease 1.34s forwards;
 }
 
-/* ── Right: Data column ── */
+/* ── Right: Operator Panel column ── */
 .dataCol {
   grid-column: 2;
   grid-row: 2;
   margin-left: 24px;
   margin-top: 8px;
   align-self: center;
-}
-
-/* Inner content with padding — glass surface is the outer */
-.colInner {
-  display: flex;
-  flex-direction: column;
-  padding: 24px 24px 24px 32px;
-}
-
-/* Header */
-.colHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-bottom: 14px;
-  margin-bottom: 2px;
-  border-bottom: 1px solid rgba(255,175,0,0.08);
-}
-
-.colTitle {
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--orange);
-}
-
-.colId {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  color: var(--dim2);
-}
-
-/* Data groups */
-.dg {
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255,175,0,0.05);
-}
-
-.dg:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.dgLabel {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--dim2);
-  margin-bottom: 8px;
-  padding-left: 18px;
-}
-
-/* Tools tags row */
-.toolsRow {
-  padding-left: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  padding-top: 4px;
-}
-
-.toolTag {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  color: var(--dim);
-  border: 1px solid var(--b1);
-  padding: 2px 6px;
 }
 
 /* ── Bottom bar ── */

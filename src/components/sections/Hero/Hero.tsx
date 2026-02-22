@@ -1,34 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
-import GlassPanel from '../../ui/GlassPanel/GlassPanel'
-import DotMatrix from '../../ui/DotMatrix/DotMatrix'
-import DataRow from '../../ui/DataRow/DataRow'
 import Button from '../../ui/Button/Button'
-import { skillGroups, tools } from '../../../data/skills'
+import OperatorPanel from '../../ui/OperatorPanel/OperatorPanel'
 import styles from './Hero.module.css'
 
 export default function Hero() {
-  const colRef = useRef<HTMLDivElement>(null)
-  const [dotsAnimated, setDotsAnimated] = useState(false)
-
-  // Trigger dot animations when data column enters viewport
-  useEffect(() => {
-    const el = colRef.current
-    if (!el) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setDotsAnimated(true)
-          observer.unobserve(el)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
   return (
     <section className={styles.hero}>
       <div className={styles.heroInner}>
@@ -82,50 +56,9 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Glass data column */}
-        <div ref={colRef} className={styles.dataCol}>
-          <GlassPanel spine id="dataCol" scanDelay="0s" initOnScroll>
-          <div className={styles.colInner}>
-            <div className={styles.colHeader}>
-              <span className={styles.colTitle}>Operator Profile</span>
-              <span className={styles.colId}>JR-2026-DT</span>
-            </div>
-
-            {/* Identity data rows */}
-            <div className={styles.dg}>
-              <DataRow label="Status"  value="Available · Q2 2026"            variant="purple" pulse index={0} />
-              <DataRow label="Base"    value="Greater Seattle Area"            variant="dim"    pulse index={1} />
-              <DataRow label="Current" value="SmarterTechnologies / SmarterDx" variant="text"   pulse index={2} />
-            </div>
-
-            {/* Skill groups */}
-            {skillGroups.map((group, gi) => (
-              <div className={styles.dg} key={group.id} id={group.id}>
-                <div className={styles.dgLabel}>{group.label}</div>
-                {group.skills.map((skill, si) => (
-                  <DotMatrix
-                    key={skill.name}
-                    name={skill.name}
-                    fill={skill.fill}
-                    color={skill.color}
-                    animate={dotsAnimated}
-                    animDelay={(gi === 0 ? 0.6 : 0.9) + si * 0.06}
-                  />
-                ))}
-              </div>
-            ))}
-
-            {/* Tools */}
-            <div className={styles.dg}>
-              <div className={styles.dgLabel}>Tools</div>
-              <div className={styles.toolsRow}>
-                {tools.map((tool) => (
-                  <span key={tool} className={styles.toolTag}>{tool}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-          </GlassPanel>
+        {/* Operator Profile Panel — LCARS instrument panel */}
+        <div className={styles.dataCol}>
+          <OperatorPanel />
         </div>
 
         {/* Bottom system bar */}

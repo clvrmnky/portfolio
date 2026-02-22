@@ -1,0 +1,78 @@
+.row {
+  display: grid;
+  grid-template-columns: 86px 1fr 22px;
+  align-items: center;
+  gap: 8px;
+  padding: 2.5px 0;
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track {
+  height: 5px;
+  background: rgba(255, 175, 0, 0.05);
+  border: 1px solid rgba(255, 175, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--fill-pct, 0%);
+  transition: width 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.orange {
+  background: var(--orange);
+  box-shadow: 3px 0 10px rgba(255, 175, 0, 0.35);
+}
+
+.blue {
+  background: var(--blue);
+  box-shadow: 3px 0 10px rgba(95, 215, 255, 0.35);
+}
+
+.purple {
+  background: var(--purple);
+  box-shadow: 3px 0 10px rgba(175, 135, 255, 0.35);
+}
+
+/* Segment dividers — 8 tick lines overlaid on track */
+.ticks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  pointer-events: none;
+}
+
+.tick {
+  flex: 1;
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.tick:last-child {
+  border-right: none;
+}
+
+.pct {
+  font-family: var(--mono);
+  font-size: 7px;
+  color: var(--dim2);
+  text-align: right;
+}

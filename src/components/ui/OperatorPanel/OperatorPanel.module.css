@@ -1,0 +1,258 @@
+/* ═══════════════════════════════════════════════════════
+   OPERATOR PANEL — LCARS-style instrument panel anatomy
+   Structure encodes hierarchy. Color blocks are load-bearing.
+═══════════════════════════════════════════════════════ */
+
+.opanel {
+  position: relative;
+  background: rgba(8, 8, 20, 0.96);   /* Near-solid — panels are opaque instruments */
+  border: 1px solid rgba(255, 175, 0, 0.18);
+  overflow: hidden;
+}
+
+/* ── Four-corner bracket markers ── */
+.cornerTL,
+.cornerTR,
+.cornerBL,
+.cornerBR {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.cornerTL { top: -1px;    left: -1px;  border-top: 2px solid var(--orange); border-left: 2px solid var(--orange); }
+.cornerTR { top: -1px;    right: -1px; border-top: 2px solid var(--orange); border-right: 2px solid var(--orange); }
+.cornerBL { bottom: -1px; left: -1px;  border-bottom: 2px solid var(--orange); border-left: 2px solid var(--orange); }
+.cornerBR { bottom: -1px; right: -1px; border-bottom: 2px solid var(--orange); border-right: 2px solid var(--orange); }
+
+/* ── Header band — solid amber-tinted structural cap ── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 14px 9px 12px;
+  background: rgba(255, 175, 0, 0.08);
+  border-bottom: 1px solid rgba(255, 175, 0, 0.2);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+/* Blinking status LED — square, not circle */
+.statusLed {
+  width: 6px;
+  height: 6px;
+  background: #00ffaa;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(0, 255, 170, 0.8);
+  animation: ledBlink 2s ease-in-out infinite;
+}
+
+.headerTitle {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerId {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  color: var(--dim2);
+}
+
+/* Small accent mark next to ID */
+.headerAccent {
+  width: 3px;
+  height: 12px;
+  background: rgba(255, 175, 0, 0.35);
+}
+
+/* ── Body: rail + content ── */
+.body {
+  display: flex;
+}
+
+/* Left color rail — the signature LCARS structural element */
+.rail {
+  width: 6px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 175, 0, 0.65) 0%,
+    rgba(255, 175, 0, 0.40) 40%,
+    rgba(255, 175, 0, 0.20) 75%,
+    rgba(255, 175, 0, 0.08) 100%
+  );
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Diamond connection nodes where sections meet the rail */
+.railNode {
+  position: absolute;
+  top: var(--pos, 0%);
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--bg);
+  border: 1.5px solid rgba(255, 175, 0, 0.55);
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: 2;
+}
+
+/* ── Content zones ── */
+.content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.zone {
+  padding: 10px 14px 10px 12px;
+  border-bottom: 1px solid rgba(255, 175, 0, 0.05);
+}
+
+.zone:last-child {
+  border-bottom: none;
+}
+
+.zoneLabel {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--dim2);
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 175, 0, 0.07);
+}
+
+/* ── Identity rows ── */
+.statusRows {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.srow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2px 0;
+}
+
+.skey {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim2);
+  flex-shrink: 0;
+}
+
+.sval {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--blue);
+  text-align: right;
+}
+
+.svalActive {
+  color: #00ffaa;
+  text-shadow: 0 0 12px rgba(0, 255, 170, 0.4);
+}
+
+/* ── Loaded modules ── */
+.modules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.module {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  background: rgba(255, 175, 0, 0.04);
+  border: 1px solid rgba(255, 175, 0, 0.12);
+  padding: 3px 7px;
+}
+
+/* ── Footer band — live telemetry ── */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 14px;
+  background: rgba(255, 175, 0, 0.04);
+  border-top: 1px solid rgba(255, 175, 0, 0.12);
+}
+
+.footerLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.connLabel {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.2em;
+  color: var(--dim2);
+}
+
+.connDot {
+  width: 4px;
+  height: 4px;
+  background: #00ffaa;
+  box-shadow: 0 0 6px rgba(0, 255, 170, 0.7);
+  animation: connPulse 2.6s ease-in-out infinite;
+}
+
+.connStatus {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  color: #00ffaa;
+}
+
+.uptime {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+  font-variant-numeric: tabular-nums;
+}
+
+.sysVer {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.14em;
+  color: var(--dim2);
+}
+
+/* ── Keyframes ── */
+@keyframes ledBlink {
+  0%, 100% { opacity: 1; }
+  40%, 60% { opacity: 0.1; }
+}
+
+@keyframes connPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(0, 255, 170, 0.7); }
+  50% { opacity: 0.35; box-shadow: 0 0 2px rgba(0, 255, 170, 0.2); }
+}
