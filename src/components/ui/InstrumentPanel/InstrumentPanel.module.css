@@ -1,0 +1,447 @@
+/* ═══════════════════════════════════════════════════════════
+   INSTRUMENT PANEL — Jarvis/Hansen 4-layer FUI artifact
+   Layer 0: dark base + radial focus gradient
+   Layer 1: structural chrome (brackets, rails, bands)
+   Layer 2: data surface (content, values)
+   Layer 3: atmospheric glow (box-shadow pulse)
+═══════════════════════════════════════════════════════════ */
+
+/* ── BOOT sequence keyframes ── */
+@keyframes panelBoot {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes headerIn {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+@keyframes footerIn {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes zoneIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* ── IDLE keyframes ── */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(0,212,255,0.10),
+      0 0 30px rgba(0,212,255,0.04),
+      0 0 60px rgba(0,212,255,0.02),
+      0 32px 80px rgba(0,0,0,0.7);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(0,212,255,0.18),
+      0 0 40px rgba(0,212,255,0.09),
+      0 0 80px rgba(0,212,255,0.04),
+      0 32px 80px rgba(0,0,0,0.7);
+  }
+}
+
+@keyframes ledBlink {
+  0%, 100% { opacity: 1; }
+  45%, 55% { opacity: 0.1; }
+}
+
+@keyframes connPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(0,212,255,0.8); }
+  50%       { opacity: 0.3; box-shadow: 0 0 2px rgba(0,212,255,0.2); }
+}
+
+@keyframes dataPulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+@keyframes panelScan {
+  0%   { top: -2px; opacity: 0; }
+  2%   { opacity: 1; }
+  25%  { top: 100%; opacity: 0; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ── LAYER 0: Panel base ── */
+.panel {
+  position: relative;
+  background: var(--inst-bg);
+  /* Angular bottom-right clip — the panel's geometry */
+  clip-path: polygon(0 0, 100% 0, 100% 93%, calc(100% - 22px) 100%, 0 100%);
+  overflow: hidden;
+
+  /* BOOT: fade in at 0.5s */
+  animation:
+    panelBoot 0.3s ease 0.5s both,
+    glowPulse 4s ease-in-out 1.4s infinite;
+}
+
+/* Radial focus gradient — "data source" is top-right */
+.panel::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -40px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(0,212,255,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── LAYER 3: Atmospheric glow field ── */
+.glowField {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Edge light */
+  background:
+    linear-gradient(180deg, rgba(0,212,255,0.03) 0%, transparent 20%),
+    linear-gradient(0deg, rgba(0,212,255,0.02) 0%, transparent 15%);
+}
+
+/* ── LAYER 1: Corner bracket markers ── */
+.cornerTL,
+.cornerTR,
+.cornerBL {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  z-index: 20;
+  pointer-events: none;
+  transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease;
+}
+
+.cornerTL { top: -1px;    left: -1px;  border-top: 1.5px solid var(--cyan); border-left: 1.5px solid var(--cyan); opacity: 0.5; }
+.cornerTR { top: -1px;    right: -1px; border-top: 1.5px solid var(--cyan); border-right: 1.5px solid var(--cyan); opacity: 0.5; }
+.cornerBL { bottom: -1px; left: -1px;  border-bottom: 1.5px solid var(--cyan); border-left: 1.5px solid var(--cyan); opacity: 0.5; }
+
+/* ACTIVE: corners tighten on hover */
+.panel:hover .cornerTL,
+.panel:hover .cornerTR,
+.panel:hover .cornerBL {
+  width: 18px;
+  height: 18px;
+  opacity: 1;
+}
+
+/* ── LAYER 1: Header band ── */
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 14px 9px 12px;
+  background: var(--inst-band);
+  border-bottom: 1px solid rgba(0,212,255,0.12);
+  overflow: hidden;
+  z-index: 5;
+
+  /* BOOT: slides down */
+  animation: headerIn 0.3s ease 0.62s both;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+/* Square LED — cyan */
+.statusLed {
+  width: 5px;
+  height: 5px;
+  background: var(--cyan);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(0,212,255,0.8);
+  animation: ledBlink 2s ease-in-out infinite;
+}
+
+.headerTitle {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ice);
+  opacity: 0.8;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Implied system classification — ambient info at low opacity */
+.classification {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.16em;
+  color: var(--ice);
+  opacity: 0.18;
+}
+
+.headerId {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  color: var(--cyan);
+  opacity: 0.55;
+}
+
+.headerAccent {
+  width: 2px;
+  height: 12px;
+  background: rgba(0,212,255,0.4);
+}
+
+/* ── LAYER 2: Body — rail + content ── */
+.body {
+  display: flex;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left color rail — structural anchor */
+.rail {
+  width: 4px;
+  background: linear-gradient(
+    180deg,
+    rgba(0,212,255,0.7) 0%,
+    rgba(0,212,255,0.4) 40%,
+    rgba(0,212,255,0.18) 75%,
+    rgba(0,212,255,0.05) 100%
+  );
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Diamond nodes at section transitions */
+.railNode {
+  position: absolute;
+  top: var(--pos, 0%);
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--inst-bg);
+  border: 1px solid rgba(0,212,255,0.5);
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: 2;
+}
+
+/* ── LAYER 2: Content zones ── */
+.content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.zone {
+  padding: 10px 14px 10px 12px;
+  border-bottom: 1px solid rgba(0,212,255,0.05);
+}
+
+.zone:last-child { border-bottom: none; }
+
+/* BOOT: zones stagger in */
+.zone:nth-child(1) { animation: zoneIn 0.35s ease 0.78s both; }
+.zone:nth-child(2) { animation: zoneIn 0.35s ease 0.88s both; }
+.zone:nth-child(3) { animation: zoneIn 0.35s ease 0.98s both; }
+
+.zoneLabel {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  /* Implied ambient info — low opacity */
+  color: var(--ice);
+  opacity: 0.22;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(0,212,255,0.06);
+}
+
+/* ── Data rows — identity zone ── */
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 2px 0;
+}
+
+.rkey {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ice);
+  opacity: 0.3;
+  flex-shrink: 0;
+}
+
+/* Value: hierarchy through BRIGHTNESS, not size */
+.rval {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--cyan);
+  text-align: right;
+  /* IDLE: data pulse — staggered per row */
+  animation: dataPulse 3.5s ease-in-out infinite;
+}
+
+.row:nth-child(1) .rval { animation-delay: 0s; }
+.row:nth-child(2) .rval { animation-delay: 0.5s; }
+.row:nth-child(3) .rval { animation-delay: 1.0s; }
+
+/* Active status — luminous green (kept from original — system status color) */
+.rvalActive {
+  color: #00ffaa;
+  text-shadow: 0 0 10px rgba(0,255,170,0.4);
+}
+
+/* ── Loaded modules ── */
+.modules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.module {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ice);
+  opacity: 0.4;
+  background: rgba(0,212,255,0.03);
+  border: 1px solid rgba(0,212,255,0.10);
+  padding: 3px 7px;
+}
+
+/* ── LAYER 1: Footer band ── */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 14px;
+  background: var(--inst-band);
+  border-top: 1px solid rgba(0,212,255,0.08);
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+
+  /* BOOT: slides up */
+  animation: footerIn 0.3s ease 0.62s both;
+}
+
+.footerLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.connLabel {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.2em;
+  color: var(--ice);
+  opacity: 0.3;
+}
+
+.connDot {
+  width: 4px;
+  height: 4px;
+  background: var(--cyan);
+  box-shadow: 0 0 6px rgba(0,212,255,0.8);
+  animation: connPulse 2.6s ease-in-out infinite;
+}
+
+.connStatus {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  color: var(--cyan);
+  opacity: 0.8;
+}
+
+.uptime {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  font-variant-numeric: tabular-nums;
+}
+
+.sysVer {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.14em;
+  color: var(--ice);
+  opacity: 0.25;
+}
+
+/* ── LAYER 1: Ambient scan line ── */
+.scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,212,255,0.06) 20%,
+    rgba(0,212,255,0.12) 50%,
+    rgba(0,212,255,0.06) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 15;
+  animation: panelScan 12s linear 2s infinite;
+}
+
+/* ── ACTIVE: sensor hover (3 phases) ── */
+/* Phase 1 (0ms): outer glow brightens — handled by glowPulse max state */
+/* Phase 2 (50ms): chrome brightens */
+/* Phase 3 (100ms): data sharpens */
+.panel {
+  transition: box-shadow 0.05s ease 0ms;
+}
+
+.panel:hover {
+  /* Immediate outer glow intensification */
+  box-shadow:
+    0 0 0 1px rgba(0,212,255,0.25),
+    0 0 40px rgba(0,212,255,0.12),
+    0 0 80px rgba(0,212,255,0.06),
+    0 32px 80px rgba(0,0,0,0.7);
+}
+
+/* Chrome brightens at 50ms delay */
+.panel:hover .header,
+.panel:hover .footer {
+  background: rgba(0,212,255,0.08);
+  transition: background 0.1s ease 0.05s;
+}
+
+/* Data sharpens at 100ms delay */
+.panel:hover .rval {
+  opacity: 1;
+  transition: opacity 0.1s ease 0.1s;
+}
+
+.panel:hover .zoneLabel {
+  opacity: 0.45;
+  transition: opacity 0.1s ease 0.1s;
+}
