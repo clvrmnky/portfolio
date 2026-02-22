@@ -52,6 +52,7 @@ export default function CircuitTraces({ groupCount = 4 }: CircuitTracesProps) {
     <svg
       ref={svgRef}
       className={styles.traces}
+      data-chrome
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
       aria-hidden="true"
@@ -62,14 +63,14 @@ export default function CircuitTraces({ groupCount = 4 }: CircuitTracesProps) {
           <line
             x1="3" y1={yPct * 100}
             x2="22" y2={yPct * 100}
-            stroke="rgba(255,175,0,0.15)"
-            strokeWidth="0.3"
+            stroke="rgba(255,175,0,0.3)"
+            strokeWidth="0.5"
           />
           {/* Diamond node at junction */}
           <rect
             x="2" y={yPct * 100 - 0.8}
             width="1.6" height="1.6"
-            fill="rgba(255,175,0,0.25)"
+            fill="rgba(255,175,0,0.45)"
             transform={`rotate(45, ${2.8}, ${yPct * 100})`}
           />
           {/* Traveling dot */}
@@ -77,7 +78,7 @@ export default function CircuitTraces({ groupCount = 4 }: CircuitTracesProps) {
             className="trace-dot"
             cx="3"
             cy={yPct * 100}
-            r="0.8"
+            r="1.2"
             fill="var(--orange)"
             data-x1="3"
             data-x2="22"

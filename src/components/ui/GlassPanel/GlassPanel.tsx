@@ -27,12 +27,13 @@ export default function GlassPanel({
       id={id}
       ref={initOnScroll ? (initRef as React.RefObject<HTMLDivElement>) : undefined}
     >
-      <div className={styles.shimmer} />
+      <div className={styles.shimmer} data-chrome />
       <div
         className={styles.scanline}
+        data-chrome
         style={{ '--scan-delay': scanDelay } as React.CSSProperties}
       />
-      {spine && <div className={styles.spine} />}
+      {spine && <div className={styles.spine} data-chrome />}
       {spine && <CircuitTraces groupCount={4} />}
       {children}
     </div>

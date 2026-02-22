@@ -55,21 +55,23 @@
 
 /* Idle data pulse — live telemetry feel */
 @keyframes dataPulse {
-  0%, 100% { opacity: 0.65; }
+  0%, 100% { opacity: 0.45; }
   50%       { opacity: 1; }
 }
 
 @keyframes dataPulseGlow {
-  0%, 100% { opacity: 0.65; text-shadow: none; }
-  50%       { opacity: 1; text-shadow: 0 0 12px rgba(95,215,255,0.5); }
+  0%, 100% { opacity: 0.45; text-shadow: none; }
+  50%       { opacity: 1; text-shadow: 0 0 16px rgba(95,215,255,0.7); }
 }
 
 .value.pulse {
   animation: dataPulse 3.5s ease-in-out infinite;
   animation-delay: var(--pulse-delay, 0s);
+  animation-fill-mode: backwards;
 }
 
 .value.pulseGlow {
   animation: dataPulseGlow 3.5s ease-in-out infinite;
   animation-delay: var(--pulse-delay, 0s);
+  animation-fill-mode: backwards;
 }

@@ -50,7 +50,7 @@ export default function DataStream() {
         ctx.beginPath()
         ctx.arc(col.x, col.y, col.dotSize, 0, Math.PI * 2)
         ctx.fillStyle = `rgb(${col.color})`
-        ctx.globalAlpha = 0.04 * col.opacity
+        ctx.globalAlpha = col.opacity * 0.18
         ctx.fill()
 
         col.y += col.speed

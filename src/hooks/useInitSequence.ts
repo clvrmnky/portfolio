@@ -9,7 +9,7 @@ interface UseInitSequenceOptions {
 export function useInitSequence(
   options: UseInitSequenceOptions = {}
 ): React.RefObject<HTMLElement | null> {
-  const { threshold = 0.15, contentSelector = ':scope > *:not(.shimmer):not(.scanline):not(.spine)' } = options
+  const { threshold = 0.15, contentSelector = ':scope > *:not([data-chrome])' } = options
   const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
