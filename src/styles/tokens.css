@@ -1,54 +1,56 @@
 /* ═══════════════════════════════════════════
-   LCARS DESIGN TOKENS
-   Single source of truth for all visual values.
-   Copy verbatim from hero-mockup.html :root block.
+   V3 DESIGN TOKENS — Jarvis/Hansen FUI
+   Deep oceanic navy. Hard bright edges.
+   Designed by the system it displays.
 ═══════════════════════════════════════════ */
 :root {
-  /* Accent colors */
+  /* ── Primary FUI palette ── */
+  --cyan:    #00D4FF;   /* primary — data values, active states, hard edges */
+  --teal:    #7BFFED;   /* secondary — connective chrome */
+  --ice:     #C8E6FF;   /* tertiary — labels, ambient text */
+
+  /* Retained for Work/Methods/Quote backward compat */
   --orange:  #ffaf00;
   --pink:    #ff5faf;
   --purple:  #af87ff;
   --blue:    #5fd7ff;
 
-  /* Text hierarchy */
-  --dim:     #7878a0;   /* ~5.5:1 on --bg — content text minimum */
-  --dim2:    #505070;   /* ~3.2:1 on --bg — decorative chrome only */
-  --text:    #c0c0d8;
-  --bright:  #eeeef6;
+  /* ── Text hierarchy ── */
+  --bright:  rgba(255,255,255,0.92);   /* primary headings — near-white */
+  --text:    rgba(200,230,255,0.72);   /* body — blue cast */
+  --dim:     rgba(0,212,255,0.60);     /* data values, secondary labels */
+  --dim2:    rgba(255,255,255,0.18);   /* ambient chrome — low opacity */
 
-  /* Background layers */
-  --bg:      #05050d;
-  --s1:      #080814;
-  --s2:      #0b0b18;
-  --b1:      #121224;
-  --b2:      #181830;
+  /* ── Background layers — oceanic deep navy ── */
+  --bg:      #030c14;
+  --s1:      #050f1c;
+  --s2:      #081424;
+  --b1:      #0c1e30;
+  --b2:      #102438;
 
-  /* Glass surface */
+  /* ── Hard edge tokens ── */
+  --edge:    rgba(0,212,255,0.55);   /* primary hard edge */
+  --edge2:   rgba(0,212,255,0.25);   /* secondary edge */
+  --edge3:   rgba(0,212,255,0.08);   /* tertiary / ambient */
+
+  /* ── Panel surfaces ── */
+  --panel-bg:     rgba(3,12,24,0.92);
+  --panel-bg-dim: rgba(3,12,24,0.60);
+
+  /* ── Glow values ── */
+  --gc:  rgba(0,212,255,0.28);
+  --gt:  rgba(123,255,237,0.18);
+  --gi:  rgba(200,230,255,0.12);
+  --go:  rgba(255,175,0,0.3);   /* amber glow — retained */
+  --gb:  rgba(95,215,255,0.22); /* blue glow — retained */
+  --gp:  rgba(175,135,255,0.18);/* purple glow — retained */
+
+  /* ── Legacy glass (Work/Methods sections) ── */
   --glass-bg:     rgba(8,8,20,0.6);
   --glass-border: rgba(255,175,0,0.07);
   --glass-shine:  rgba(255,255,255,0.025);
 
-  /* Glow values */
-  --go: rgba(255,175,0,0.3);
-  --gb: rgba(95,215,255,0.22);
-  --gp: rgba(175,135,255,0.18);
-
-  /* ── Phase 2: Jarvis blue palette (Hero) ── */
-  --cyan:    #00D4FF;   /* primary — data values, key readouts, active states */
-  --teal:    #7BFFED;   /* secondary data, connective chrome */
-  --ice:     #C8E6FF;   /* labels, chrome text, tertiary */
-
-  /* Cyan glow values */
-  --gc:  rgba(0,212,255,0.28);
-  --gt:  rgba(123,255,237,0.18);
-  --gi:  rgba(200,230,255,0.12);
-
-  /* Instrument panel surface */
-  --inst-bg:     rgba(3,4,12,0.97);
-  --inst-border: rgba(0,212,255,0.10);
-  --inst-band:   rgba(0,212,255,0.055);
-
-  /* Typography */
+  /* ── Typography ── */
   --mono: 'IBM Plex Mono', monospace;
   --sans: 'IBM Plex Sans', sans-serif;
 }

@@ -1,104 +1,87 @@
 /* ═══════════════════════════════════════════
-   NAV
+   NAV — V3 Hard-edge FUI
+   No blur. Hard 1px cyan edge. |LABEL format.
 ═══════════════════════════════════════════ */
+
+@keyframes navIn     { to { opacity: 1; } }
+@keyframes ledBlink  { 0%, 100% { opacity: 1; } 45%, 55% { opacity: 0.05; } }
+
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  height: 50px;
+  height: 46px;
   display: flex;
   align-items: center;
   padding: 0 44px;
-  background: rgba(5,5,13,0.88);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--b1);
+  /* Hard surface — no glass blur */
+  background: rgba(3,12,20,0.96);
+  border-bottom: 1px solid var(--edge);
   opacity: 0;
-  animation: fadeIn 0.5s ease 0.2s forwards;
+  animation: navIn 0.4s ease 0.15s forwards;
 }
 
-/* Orange-to-purple gradient accent line at top */
-.nav::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--orange) 20%, var(--purple) 60%, transparent 95%);
-  opacity: 0.35;
-}
-
-/* Dashed bottom rule */
-.nav::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 44px;
-  right: 44px;
-  height: 1px;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0px, transparent 62px,
-    var(--b2) 62px, var(--b2) 64px
-  );
-}
-
-/* Scroll progress bar */
+/* Scroll progress bar — cyan */
 .progressBar {
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
   height: 1px;
-  background: var(--orange);
-  box-shadow: 0 0 8px var(--go);
+  background: var(--cyan);
+  box-shadow: 0 0 6px rgba(0,212,255,0.6);
   transform-origin: left;
   transform: scaleX(0);
   transition: transform 0.05s linear;
-  z-index: 1;
+  z-index: 2;
 }
 
-/* ── Brand ── */
-.brand {
+/* ── Operator identifier ── */
+.ident {
   display: flex;
   align-items: center;
   gap: 10px;
   flex: 0 0 auto;
 }
 
-.lcarsLines {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+/* Small square mark — targeting indicator */
+.identMark {
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--cyan);
+  opacity: 0.7;
+  flex-shrink: 0;
 }
 
-.lcarsLine {
-  display: block;
-  height: 1px;
-  background: var(--orange);
-}
-
-.navName {
+.identLabel {
   font-family: var(--mono);
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   color: var(--bright);
 }
 
-.navSlash {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--dim);
+/* Thin vertical divider */
+.identSep {
+  display: block;
+  width: 1px;
+  height: 16px;
+  background: var(--edge2);
 }
 
-/* ── Links ── */
+.identSub {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: rgba(200,230,255,0.3);
+}
+
+/* ── |LABEL navigation ── */
 .links {
   display: flex;
-  gap: 32px;
+  gap: 28px;
   list-style: none;
   margin: 0 auto;
 }
@@ -107,74 +90,88 @@
   font-family: var(--mono);
   font-size: 9px;
   font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--dim);
+  letter-spacing: 0.22em;
+  color: rgba(200,230,255,0.35);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color 0.12s ease;
+  display: flex;
+  align-items: center;
+  gap: 0;
   position: relative;
-  padding-bottom: 2px;
+  padding-bottom: 1px;
 }
 
+/* The | pipe — cyan, always visible */
+.pipe {
+  color: var(--cyan);
+  opacity: 0.55;
+  margin-right: 2px;
+  transition: opacity 0.12s ease;
+}
+
+/* Underline — draws in on hover */
 .link::after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -2px;
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--orange);
-  box-shadow: 0 0 8px var(--go);
+  background: var(--cyan);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.2s cubic-bezier(0.16,1,0.3,1);
 }
 
-.link:hover { color: var(--bright); }
-.link:hover::after,
-.link.active::after { transform: scaleX(1); }
-.link.active { color: var(--text); }
+.link:hover {
+  color: var(--bright);
+}
 
-/* ── System indicator ── */
-.sys {
+.link:hover .pipe {
+  opacity: 1;
+}
+
+.link:hover::after,
+.link.active::after {
+  transform: scaleX(1);
+}
+
+.link.active {
+  color: rgba(200,230,255,0.65);
+}
+
+/* ── Availability status ── */
+.status {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex: 0 0 auto;
+  border: 1px solid var(--edge2);
+  padding: 4px 10px;
 }
 
-.sysDot {
+/* Square LED — not circle */
+.statusLed {
   width: 5px;
   height: 5px;
-  border-radius: 50%;
-  background: var(--blue);
-  box-shadow: 0 0 8px var(--gb);
-  animation: blinkPulse 3s ease-in-out infinite;
+  background: var(--cyan);
+  box-shadow: 0 0 8px rgba(0,212,255,0.8);
+  flex-shrink: 0;
+  animation: ledBlink 2.2s ease-in-out infinite;
 }
 
-.sysTag {
+.statusLabel {
   font-family: var(--mono);
   font-size: 8px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dim);
-  border: 1px solid var(--b1);
-  padding: 3px 8px;
+  letter-spacing: 0.18em;
+  color: var(--cyan);
+  opacity: 0.85;
 }
 
 /* ── Mobile ── */
 @media (max-width: 768px) {
-  .nav {
-    padding: 0 20px;
-  }
-  .links {
-    display: none;
-  }
-  .navSlash {
-    display: none;
-  }
+  .nav { padding: 0 20px; }
+  .links { display: none; }
+  .identSub { display: none; }
+  .identSep { display: none; }
 }
-
-/* ── Keyframes ── */
-@keyframes fadeIn      { to { opacity: 1; } }
-@keyframes blinkPulse  { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
