@@ -1,0 +1,129 @@
+/* ══ CaseCard — module ════════════════════════════════════
+   Full terminal case record card with glass + FUI chrome.
+   Hover: TargetAssembly brackets fade in, border brightens.
+══════════════════════════════════════════════════════════ */
+
+.card {
+  position: relative;
+  background: rgba(0, 8, 16, 0.48);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-top: 2px solid rgba(0, 212, 255, 0.2);
+  padding: 20px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(0, 212, 255, 0.28);
+  border-top-color: rgba(0, 212, 255, 0.55);
+  background: rgba(0, 10, 22, 0.6);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 0 40px rgba(0, 212, 255, 0.02);
+}
+
+.cardTarget {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.card:hover .cardTarget {
+  opacity: 1;
+}
+
+.featured {
+  border-top-width: 3px;
+  border-top-color: rgba(0, 212, 255, 0.35);
+}
+
+.header {
+  margin-bottom: 12px;
+}
+
+.headerDivider {
+  height: 1px;
+  background: rgba(0, 212, 255, 0.08);
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(220, 240, 255, 0.88);
+  line-height: 1.3;
+}
+
+.desc {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 11px;
+  line-height: 1.7;
+  color: rgba(200, 230, 255, 0.42);
+  letter-spacing: 0.02em;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 18px;
+}
+
+.metric {
+  margin-bottom: 16px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 212, 255, 0.06);
+}
+
+.footerRule {
+  flex: 0 0 auto;
+}
+
+.cta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: rgba(200, 230, 255, 0.3);
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-left: auto;
+  transition: color 0.15s;
+}
+
+.cta::after {
+  content: ' →';
+}
+
+.card:hover .cta {
+  color: rgba(0, 212, 255, 0.75);
+}
