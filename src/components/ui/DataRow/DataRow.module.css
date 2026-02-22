@@ -52,3 +52,24 @@
 .value.text   { font-size: 9px; color: var(--text); font-weight: 400; }
 .value.purple { font-size: 8px; color: var(--purple); font-weight: 400; }
 .value.dim    { font-size: 8px; color: var(--dim); font-weight: 400; }
+
+/* Idle data pulse — live telemetry feel */
+@keyframes dataPulse {
+  0%, 100% { opacity: 0.65; }
+  50%       { opacity: 1; }
+}
+
+@keyframes dataPulseGlow {
+  0%, 100% { opacity: 0.65; text-shadow: none; }
+  50%       { opacity: 1; text-shadow: 0 0 12px rgba(95,215,255,0.5); }
+}
+
+.value.pulse {
+  animation: dataPulse 3.5s ease-in-out infinite;
+  animation-delay: var(--pulse-delay, 0s);
+}
+
+.value.pulseGlow {
+  animation: dataPulseGlow 3.5s ease-in-out infinite;
+  animation-delay: var(--pulse-delay, 0s);
+}

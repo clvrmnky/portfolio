@@ -93,9 +93,9 @@ export default function Hero() {
 
             {/* Identity data rows */}
             <div className={styles.dg}>
-              <DataRow label="Status"  value="Available · Q2 2026"             variant="purple" />
-              <DataRow label="Base"    value="Greater Seattle Area"             variant="dim" />
-              <DataRow label="Current" value="SmarterTechnologies / SmarterDx"  variant="text" />
+              <DataRow label="Status"  value="Available · Q2 2026"            variant="purple" pulse index={0} />
+              <DataRow label="Base"    value="Greater Seattle Area"            variant="dim"    pulse index={1} />
+              <DataRow label="Current" value="SmarterTechnologies / SmarterDx" variant="text"   pulse index={2} />
             </div>
 
             {/* Skill groups */}
