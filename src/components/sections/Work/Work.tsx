@@ -1,36 +1,22 @@
-import { useEffect, useRef } from 'react'
-import Tag from '../../ui/Tag/Tag'
+import React from 'react'
 import { caseStudies } from '../../../data/caseStudies'
-import { staggerIn } from '../../../utils/animations'
+import { CaseCard } from '../../fui/modules/CaseCard'
+import {
+  InlineSep,
+  NumberedItem,
+  StatusIndicator,
+} from '../../fui'
 import styles from './Work.module.css'
 
 export default function Work() {
-  const gridRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const el = gridRef.current
-    if (!el) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          staggerIn(el)
-          observer.unobserve(el)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
   return (
     <section className={styles.section} id="work">
+
+      {/* Section eyebrow — FUI-styled */}
       <div className={styles.eyebrow}>
-        <span className={styles.eyNum}>[ 01 ]</span>
-        <span className={styles.eyLbl}>Case Studies</span>
+        <NumberedItem index={1} label="CASE_STUDIES" width={160} stroke="rgba(0,212,255,0.3)" />
         <div className={styles.eyLine} />
+        <StatusIndicator status="active" label="3 RECORDS" />
       </div>
 
       <h2 className={styles.heading}>
@@ -41,35 +27,26 @@ export default function Work() {
         the reasoning structure underneath it, and the strategic framework for earning agreement at scale.
       </p>
 
-      <div className={styles.grid} ref={gridRef}>
-        {caseStudies.map((cs, index) => (
-          <div
+      <div className={styles.sectionSep}>
+        <InlineSep
+          width={400}
+          gap={14}
+          centerMark="diamond"
+          stroke="rgba(0,212,255,0.12)"
+        />
+      </div>
+
+      {/* Cards grid */}
+      <div className={styles.grid}>
+        {caseStudies.map((cs, i) => (
+          <CaseCard
             key={cs.id}
-            className={`${styles.card} ${cs.featured ? styles.featured : ''}`}
-          >
-            <div className={styles.cardScanline} style={{ '--card-scan-delay': `${index * 1.5}s` } as React.CSSProperties} />
-            <div className={styles.cardMeta}>
-              <span className={styles.cardNum}>{cs.number}</span>
-              <div className={styles.cardRule} />
-              <span className={styles.cardCat}>{cs.category}</span>
-            </div>
-
-            <div className={styles.tags}>
-              {cs.tags.map((tag) => (
-                <Tag
-                  key={tag}
-                  label={tag}
-                  color={cs.highlightedTags.includes(tag) ? 'purple' : 'default'}
-                />
-              ))}
-            </div>
-
-            <div className={styles.cardTitle}>{cs.title}</div>
-            <div className={styles.cardDesc}>{cs.description}</div>
-            <a href={cs.ctaHref} className={styles.cta}>{cs.ctaLabel}</a>
-          </div>
+            cs={cs}
+            revealDelay={i * 120}
+          />
         ))}
       </div>
+
     </section>
   )
 }
