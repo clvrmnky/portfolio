@@ -1,0 +1,53 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 22px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  clip-path: polygon(0 0, 100% 0, 100% 55%, calc(100% - 14px) 100%, 0 100%);
+
+  /* Sensor hover: 3 phases staggered */
+  /* Phase 1 (0ms): outer glow via filter */
+  /* Phase 2 (50ms): border brightens */
+  /* Phase 3 (100ms): text snaps */
+  transition:
+    filter 0.05s ease 0ms,
+    background 0.1s ease 0.05s,
+    color 0.08s ease 0.1s;
+}
+
+.primary {
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.30);
+  color: var(--bright);
+  filter: drop-shadow(0 0 2px rgba(0,212,255,0.15));
+}
+
+.ghost {
+  background: transparent;
+  border: 1px solid rgba(0,212,255,0.18);
+  color: var(--ice);
+  filter: drop-shadow(0 0 1px rgba(0,212,255,0.08));
+}
+
+.primary:hover {
+  background: rgba(0,212,255,0.14);
+  color: #ffffff;
+  filter:
+    drop-shadow(0 0 8px rgba(0,212,255,0.35))
+    drop-shadow(0 0 2px rgba(0,212,255,0.6));
+}
+
+.ghost:hover {
+  background: rgba(0,212,255,0.05);
+  color: var(--bright);
+  filter: drop-shadow(0 0 6px rgba(0,212,255,0.25));
+}
+
+/* No keyframes needed here */
