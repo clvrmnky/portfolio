@@ -1,0 +1,95 @@
+/* src/components/fui/assembled/StudyCard.module.css */
+.card {
+  padding: 20px;
+  background: rgba(3,12,24,0.7);
+  border: 1px solid rgba(0,212,255,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(0,212,255,0.22);
+}
+
+.winner {
+  border-top: 2px solid rgba(0,212,255,0.55);
+  background: rgba(0,212,255,0.03);
+}
+
+.dangerous {
+  border-top: 2px solid rgba(255,80,80,0.4);
+}
+
+.control {
+  opacity: 0.75;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.designId {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(0,212,255,0.6);
+}
+
+.winner .designId {
+  color: rgba(0,212,255,0.9);
+}
+
+.name {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(200,230,255,0.85);
+  text-transform: uppercase;
+}
+
+.architecture {
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(200,230,255,0.55);
+  margin: 0;
+}
+
+.accuracyRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.accuracyLabel {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: rgba(0,212,255,0.4);
+}
+
+.insightBlock {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0,212,255,0.06);
+}
+
+.insightText {
+  font-size: 11px;
+  line-height: 1.6;
+  color: rgba(200,230,255,0.5);
+  margin: 0;
+  font-style: italic;
+}
+
+.winner .insightText {
+  color: rgba(200,230,255,0.72);
+}
