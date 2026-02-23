@@ -21,7 +21,7 @@ export function ChapterNav({ chapters, activeChapter }: Props) {
   }
 
   return (
-    <nav className={styles.nav}>
+    <nav className={styles.nav} aria-label="Chapter navigation">
       {/* Header */}
       <div className={styles.navHeader}>
         <StatusIndicator status="active" label="ACTIVE" />
@@ -40,7 +40,7 @@ export function ChapterNav({ chapters, activeChapter }: Props) {
               <button
                 className={`${styles.btn} ${isActive ? styles.btnActive : ''}`}
                 onClick={() => handleClick(ch.id)}
-                aria-current={isActive ? 'true' : undefined}
+                aria-current={isActive ? 'location' : undefined}
               >
                 <div className={styles.btnLeft}>
                   <DiamondMark

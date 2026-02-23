@@ -411,7 +411,7 @@ export default function TextFrameCasePage() {
             <p className={styles.bodyText}>
               Phase 2 ships in CRI (Clinical Reasoning Interfaces) with PM Shivani Patel.
               Justin is the continuous owner — same designer from the first TextFrame through
-              current Figma. This is the full implementation of what the study validated two years ago.
+              current Figma. This is the full implementation of what the study validated — now shipping in full for the first time.
             </p>
 
             {/* Why it's the completing layer */}
