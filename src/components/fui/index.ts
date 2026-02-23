@@ -23,6 +23,7 @@ export { AxisRuler }         from './primitives/AxisRuler'
 export { NotationBracket }   from './primitives/NotationBracket'
 
 // Modules (composed, content-bearing)
+export { ChapterNav }        from './modules/ChapterNav'
 export { OperatorRecord }    from './modules/OperatorRecord'
 export { IdentityModule }    from './modules/IdentityModule'
 export { SummaryModule }     from './modules/SummaryModule'
