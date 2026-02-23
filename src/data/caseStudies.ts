@@ -25,7 +25,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Evidence UX & The TextFrame Method',
     description: 'A new design methodology, a comparative study across four competing architectures, and a two-phase implementation arc. 33% lift in reviewer decision accuracy.',
     ctaLabel: 'View case study',
-    ctaHref: '#',
+    ctaHref: '/case-study/textframe',
     featured: true,
     category: 'Evidence UX',
     status: 'active',
