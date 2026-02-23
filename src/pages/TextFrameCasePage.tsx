@@ -3,6 +3,10 @@ import { ChapterNav } from '../components/fui/modules/ChapterNav'
 import type { Chapter } from '../components/fui/modules/ChapterNav'
 import { DiamondMark } from '../components/fui'
 import { InlineSep } from '../components/fui'
+import { MetricReadout } from '../components/fui/assembled/MetricReadout'
+import { PanelTag } from '../components/fui/assembled/PanelTag'
+import { DataBracket } from '../components/fui/primitives/DataBracket'
+import { MeasurementLine } from '../components/fui/primitives/MeasurementLine'
 import styles from './TextFrameCasePage.module.css'
 
 const CHAPTERS: Chapter[] = [
@@ -56,7 +60,55 @@ export default function TextFrameCasePage() {
             <h2 className={styles.chapterTitle}>SITUATION</h2>
           </div>
           <div className={styles.chapterBody}>
-            <p className={styles.bodyText}>Chapter content coming in Task 3.</p>
+
+            {/* Problem statement */}
+            <p className={styles.bodyText}>
+              Before Justin joined, CPO Joshua Galoria wrote a strategic memo naming the problem:
+              clinical data had titles and facts, but no structure connecting them to a thesis.
+              Reviewers had no reliable path from data to diagnosis.
+            </p>
+
+            {/* CPO quote */}
+            <blockquote className={styles.quote}>
+              <PanelTag label="CPO_MEMO" width={72} height={16} />
+              <p className={styles.quoteText}>
+                "The facts need to tie back to a thesis statement. We need structure.
+                We need better arguments that are logically connected and tell a consistent story."
+              </p>
+            </blockquote>
+
+            {/* Key metrics row */}
+            <div className={styles.metricsRow}>
+              <div className={styles.metricItem}>
+                <MetricReadout value="38%" label="BLINDED MISS RATE" />
+                <p className={styles.metricNote}>Same reviewer. Same case. Different answer.</p>
+              </div>
+              <div className={styles.metricDivider} />
+              <div className={styles.metricItem}>
+                <MetricReadout value="0s" label="TIME TO AH-HA" />
+                <p className={styles.metricNote}>Baseline: reviewers reconstructing from memory.</p>
+              </div>
+            </div>
+
+            {/* Liz Walsh signal */}
+            <div className={styles.signalBlock}>
+              <DataBracket width={3} height={60} stroke="rgba(0,212,255,0.4)" />
+              <div className={styles.signalContent}>
+                <span className={styles.signalLabel}>BENCHMARK SIGNAL</span>
+                <p className={styles.bodyText} style={{ margin: 0 }}>
+                  A reviewer named Liz Walsh, reviewing a bleeding case, said "the hemoglobin was
+                  stable" — but there was no hemoglobin data on screen. She had memorized through
+                  hundreds of repetitions that its absence meant stability. That's not a design
+                  worth building on.
+                </p>
+              </div>
+            </div>
+
+            <p className={styles.bodyText}>
+              Justin joined in February 2025, two months after the memo. His contribution was
+              building the method, running the research, and proving the hypothesis with data —
+              not executing a brief he was handed.
+            </p>
           </div>
         </section>
 
@@ -68,7 +120,59 @@ export default function TextFrameCasePage() {
             <h2 className={styles.chapterTitle}>METHOD</h2>
           </div>
           <div className={styles.chapterBody}>
-            <p className={styles.bodyText}>Chapter content coming in Task 4.</p>
+
+            <p className={styles.bodyText}>
+              The TextFrame was invented in February–March 2025. The insight: you can test
+              information architecture without building anything. Plain text, structured like a
+              clinical argument, simulates what a better UI does to human cognition.
+            </p>
+
+            {/* What a TextFrame is */}
+            <div className={styles.definitionBlock}>
+              <div className={styles.definitionHeader}>
+                <PanelTag label="DEFINITION" width={80} height={16} />
+                <MeasurementLine width={120} capHeight={4} />
+              </div>
+              <ul className={styles.definitionList}>
+                {[
+                  'Plain text document — no design tooling required',
+                  "Structured to simulate a specific UI layout's information hierarchy",
+                  'Reviewed by real CliDxps users with actual patient visit data',
+                  'Fast like a sketch, structured like a prototype, designed to think with AI',
+                  'Produces real cognitive responses because the content is real patient data',
+                ].map((item, i) => (
+                  <li key={i} className={styles.definitionItem}>
+                    <DiamondMark size={3} stroke="rgba(0,212,255,0.5)" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Speed claim */}
+            <div className={styles.metricsRow}>
+              <div className={styles.metricItem}>
+                <MetricReadout value="21d" label="SPRINT PROOF" />
+                <p className={styles.metricNote}>CPO problem memo → validated design direction.</p>
+              </div>
+            </div>
+
+            {/* Spread */}
+            <p className={styles.bodyText}>
+              PM Robby Peters credited TextFrames by name in the March 2025 Data Display Deep Dive.
+              CPO asked Justin to present to the full product org — not just as a research output,
+              but as a demonstration of AI-speed design validation. The TextFrame wasn't just a
+              research instrument. It was a different model of design velocity.
+            </p>
+
+            {/* Justin quote */}
+            <blockquote className={styles.quote}>
+              <PanelTag label="DESIGN_LEAD" width={80} height={16} />
+              <p className={styles.quoteText}>
+                "Finding the opportunity to prototype with AI quickly without having to build
+                actual screens, this led me to write this thesis."
+              </p>
+            </blockquote>
           </div>
         </section>
 
