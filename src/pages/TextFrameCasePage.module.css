@@ -276,3 +276,60 @@
 .honestHeader {
   margin-bottom: 4px;
 }
+
+/* ── PILOT ── */
+.sitesRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.findingsBlock {
+  margin-top: 28px;
+  border-top: 1px solid var(--edge3);
+}
+
+/* ── PHASE 2 ── */
+.evidenceStates {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 28px 0;
+}
+
+.timeline {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--edge3);
+  display: flex;
+  flex-direction: column;
+}
+
+.timelineHeader {
+  margin-bottom: 16px;
+}
+
+.timelineItem {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,212,255,0.04);
+}
+
+.timelineDate {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  color: rgba(0,212,255,0.45);
+  flex-shrink: 0;
+  width: 68px;
+}
+
+.timelineEvent {
+  font-size: 12px;
+  line-height: 1.55;
+  color: rgba(200,230,255,0.6);
+}
