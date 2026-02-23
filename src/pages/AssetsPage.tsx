@@ -39,6 +39,10 @@ import {
   CapabilityIndex,
   OperatorProfile,
   CaseCard,
+  StudyCard,
+  FindingBlock,
+  EvidenceState,
+  ChapterNav,
 } from '../components/fui'
 import { caseStudies } from '../data/caseStudies'
 
@@ -382,6 +386,33 @@ export default function AssetsPage() {
             />
           </Cell>
 
+          <Cell name="StudyCard">
+            <StudyCard
+              designId="D3"
+              name="Clinical Progression"
+              architecture="Evidence as chronological disease story."
+              accuracy={80}
+              insight="Matched how clinicians actually reason."
+              variant="winner"
+            />
+          </Cell>
+
+          <Cell name="FindingBlock">
+            <FindingBlock
+              number={1}
+              title="Clarity & Efficiency"
+              detail="Reduced cognitive load. Reviewers said 'like cliff notes for the chart.'"
+            />
+          </Cell>
+
+          <Cell name="EvidenceState">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: 320 }}>
+              <EvidenceState state="supported" description="Evidence present with citations." />
+              <EvidenceState state="not-found" description="Expected criteria absent — visible absence as clinical signal." />
+              <EvidenceState state="conflicting" description="Contradictory data surfaced for evaluation." />
+            </div>
+          </Cell>
+
         </Section>
 
         {/* ── MODULES ───────────────────────── */}
@@ -428,6 +459,19 @@ export default function AssetsPage() {
           <CellWide name="CaseCard">
             <CaseCard cs={caseStudies[0]} />
           </CellWide>
+
+          <Cell name="ChapterNav">
+            <div style={{ height: 300, width: 220, position: 'relative', overflow: 'hidden' }}>
+              <ChapterNav
+                chapters={[
+                  { id: 'situation', number: '01', label: 'SITUATION' },
+                  { id: 'method',    number: '02', label: 'METHOD' },
+                  { id: 'study',     number: '03', label: 'STUDY' },
+                ]}
+                activeChapter="method"
+              />
+            </div>
+          </Cell>
 
         </Section>
 
