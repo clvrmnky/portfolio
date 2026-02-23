@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { ChapterNav } from '../components/fui/modules/ChapterNav'
+import type { Chapter } from '../components/fui/modules/ChapterNav'
 import { DiamondMark } from '../components/fui'
 import { InlineSep } from '../components/fui'
 import styles from './TextFrameCasePage.module.css'
 
-const CHAPTERS = [
+const CHAPTERS: Chapter[] = [
   { id: 'situation', number: '01', label: 'SITUATION' },
   { id: 'method',    number: '02', label: 'METHOD' },
   { id: 'study',     number: '03', label: 'STUDY' },
@@ -49,7 +50,7 @@ export default function TextFrameCasePage() {
 
         <section id="situation" data-chapter className={styles.chapter}>
           <div className={styles.chapterHeader}>
-            <DiamondMark size={6} stroke="rgba(0,212,255,0.7)" />
+            <DiamondMark size={6} stroke="rgba(0,212,255,0.6)" />
             <span className={styles.chapterNumber}>01</span>
             <InlineSep />
             <h2 className={styles.chapterTitle}>SITUATION</h2>
@@ -61,7 +62,7 @@ export default function TextFrameCasePage() {
 
         <section id="method" data-chapter className={styles.chapter}>
           <div className={styles.chapterHeader}>
-            <DiamondMark size={6} stroke="rgba(0,212,255,0.7)" />
+            <DiamondMark size={6} stroke="rgba(0,212,255,0.6)" />
             <span className={styles.chapterNumber}>02</span>
             <InlineSep />
             <h2 className={styles.chapterTitle}>METHOD</h2>
@@ -73,7 +74,7 @@ export default function TextFrameCasePage() {
 
         <section id="study" data-chapter className={styles.chapter}>
           <div className={styles.chapterHeader}>
-            <DiamondMark size={6} stroke="rgba(0,212,255,0.7)" />
+            <DiamondMark size={6} stroke="rgba(0,212,255,0.6)" />
             <span className={styles.chapterNumber}>03</span>
             <InlineSep />
             <h2 className={styles.chapterTitle}>STUDY</h2>
@@ -85,7 +86,7 @@ export default function TextFrameCasePage() {
 
         <section id="results" data-chapter className={styles.chapter}>
           <div className={styles.chapterHeader}>
-            <DiamondMark size={6} stroke="rgba(0,212,255,0.7)" />
+            <DiamondMark size={6} stroke="rgba(0,212,255,0.6)" />
             <span className={styles.chapterNumber}>04</span>
             <InlineSep />
             <h2 className={styles.chapterTitle}>RESULTS</h2>
@@ -97,7 +98,7 @@ export default function TextFrameCasePage() {
 
         <section id="pilot" data-chapter className={styles.chapter}>
           <div className={styles.chapterHeader}>
-            <DiamondMark size={6} stroke="rgba(0,212,255,0.7)" />
+            <DiamondMark size={6} stroke="rgba(0,212,255,0.6)" />
             <span className={styles.chapterNumber}>05</span>
             <InlineSep />
             <h2 className={styles.chapterTitle}>PILOT</h2>
@@ -109,7 +110,7 @@ export default function TextFrameCasePage() {
 
         <section id="phase2" data-chapter className={styles.chapter}>
           <div className={styles.chapterHeader}>
-            <DiamondMark size={6} stroke="rgba(0,212,255,0.7)" />
+            <DiamondMark size={6} stroke="rgba(0,212,255,0.6)" />
             <span className={styles.chapterNumber}>06</span>
             <InlineSep />
             <h2 className={styles.chapterTitle}>PHASE 2</h2>
