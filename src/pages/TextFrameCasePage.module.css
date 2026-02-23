@@ -190,3 +190,89 @@
   line-height: 1.65;
   color: var(--text);
 }
+
+/* ── STUDY ── */
+.highlight {
+  color: rgba(200,230,255,0.9);
+  font-weight: 600;
+}
+
+.studyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(0,212,255,0.06);
+  margin: 28px 0;
+}
+
+.liftCallout {
+  padding: 24px;
+  background: rgba(0,212,255,0.04);
+  border: 1px solid rgba(0,212,255,0.18);
+  margin-top: 8px;
+}
+
+.liftMain {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.liftDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.liftFormula {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: rgba(0,212,255,0.55);
+}
+
+.liftNote {
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(200,230,255,0.55);
+  margin: 0;
+  max-width: 440px;
+}
+
+/* ── RESULTS ── */
+.columnGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.columnItem {
+  padding: 16px;
+  background: rgba(0,212,255,0.03);
+  border: 1px solid var(--edge3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.columnDesc {
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(200,230,255,0.55);
+  margin: 0;
+}
+
+.honestMiddle {
+  margin: 32px 0;
+  padding: 24px;
+  background: rgba(255,175,0,0.03);
+  border: 1px solid rgba(255,175,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.honestHeader {
+  margin-bottom: 4px;
+}
