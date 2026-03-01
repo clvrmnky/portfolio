@@ -61,15 +61,16 @@ export default function IdentityZone() {
           </div>
           <div className={styles.zoneBody}>
             <p className={styles.heroTagline}>
-              Design for AI systems.<br />
-              <em>Systems for AI design.</em>
+              Built design from 0–1<br />
+              <em>at a clinical AI startup.</em>
             </p>
             <div className={styles.signalDivider} />
             <p className={styles.heroBody}>
-              I work at the intersection of design craft and AI infrastructure —
-              building clinical interfaces, reasoning frameworks, and the tools
-              to construct them. Every decision connects to whether a human
-              trusts the AI enough to act on it.
+              Product Design Lead at SmarterDx. AI-native methods, clinical
+              interfaces, and reasoning frameworks — all connected to one
+              north star: whether a human trusts the AI enough to act on it.
+              <br /><br />
+              33% accuracy lift. Team scaled 1→6. Projected 6–13% agree rate improvement.
             </p>
           </div>
           {/* Traveling trace — left border, top→bottom */}
