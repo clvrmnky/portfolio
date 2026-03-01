@@ -17,14 +17,13 @@ export default function HomePage() {
       <FuiCursor />
       <ScrollRuler />
       <Nav />
-      <Hero>
-        <ContextBridge />
-        <Thesis />
-        <Work />
-        <Leadership />
-        <Velocity />
-        <Quote />
-      </Hero>
+      <Hero />
+      <ContextBridge />
+      <Thesis />
+      <Work />
+      <Leadership />
+      <Velocity />
+      <Quote />
     </>
   )
 }
