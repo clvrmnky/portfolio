@@ -1,0 +1,310 @@
+/* src/pages/AgreeRatePage.module.css */
+.page {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+}
+
+.content {
+  padding: 60px 72px 200px;
+  max-width: 900px;
+}
+
+/* Back navigation */
+.backNav {
+  margin-bottom: 32px;
+}
+
+.backLink {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: rgba(0,212,255,0.5);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.backLink:hover {
+  color: rgba(0,212,255,0.9);
+}
+
+/* Page header */
+.pageHeader {
+  margin-bottom: 72px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.eyebrowLabel {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--dim);
+}
+
+.title {
+  font-family: var(--sans);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--bright);
+  margin: 0 0 20px;
+}
+
+.subtitle {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text);
+  max-width: 560px;
+  margin: 16px 0 0;
+}
+
+/* Chapter sections */
+.chapter {
+  margin-bottom: 96px;
+  padding-top: 24px;
+  border-top: 1px solid var(--edge3);
+}
+
+.chapterHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.chapterNumber {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--dim);
+}
+
+.chapterTitle {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: rgba(0,212,255,0.6);
+  margin: 0;
+}
+
+.chapterBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionHeading {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--bright);
+  margin: 0 0 20px;
+  line-height: 1.35;
+}
+
+.bodyText {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text);
+  max-width: 620px;
+  margin: 0 0 20px;
+}
+
+/* ── Shared patterns ── */
+.quote {
+  margin: 28px 0;
+  padding: 20px 24px;
+  background: rgba(0,212,255,0.04);
+  border-left: 2px solid rgba(0,212,255,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quoteText {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(200,230,255,0.78);
+  font-style: italic;
+  margin: 0;
+}
+
+.quoteAttribution {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: rgba(0,212,255,0.5);
+}
+
+.signalBlock {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.signalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.signalLabel {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: rgba(0,212,255,0.5);
+}
+
+/* ── HOW IT WAS BUILT — site badges ── */
+.sitesRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+/* ── FOUR LEVERS — lever cards ── */
+.leversGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(0,212,255,0.06);
+  margin: 28px 0;
+}
+
+.leverCard {
+  background: var(--bg);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leverHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.leverName {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(200,230,255,0.9);
+}
+
+.leverTagline {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: rgba(0,212,255,0.55);
+}
+
+.leverBody {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(200,230,255,0.55);
+  margin: 0;
+  max-width: 560px;
+}
+
+/* ── IMPACT — data table ── */
+.impactTable {
+  margin: 28px 0;
+  border: 1px solid var(--edge3);
+  background: rgba(0,212,255,0.02);
+}
+
+.impactTableHeader {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr;
+  padding: 10px 16px;
+  background: rgba(0,212,255,0.05);
+  border-bottom: 1px solid var(--edge3);
+}
+
+.impactColLever,
+.impactColPhase,
+.impactColContrib {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: rgba(0,212,255,0.6);
+}
+
+.impactTableRow {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0,212,255,0.04);
+  align-items: baseline;
+}
+
+.impactTableRow:last-child {
+  border-bottom: none;
+}
+
+.impactCellLever {
+  font-size: 12px;
+  line-height: 1.55;
+  color: rgba(200,230,255,0.75);
+}
+
+.impactCellPhase {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(200,230,255,0.45);
+}
+
+.impactCellContrib {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: rgba(123,255,237,0.7);
+}
+
+/* ── ADOPTION — cross-links ── */
+.crossLinks {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--edge3);
+}
+
+.crossLinksHeader {
+  margin-bottom: 16px;
+}
+
+.crossLinksRow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.crossLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: rgba(0,212,255,0.6);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.crossLink:hover {
+  color: rgba(0,212,255,0.9);
+}
