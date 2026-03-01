@@ -1,0 +1,106 @@
+/* ═══════════════════════════════════════════
+   LEADERSHIP SECTION
+   Compact stats + prose module.
+═══════════════════════════════════════════ */
+
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 80px 44px;
+  border-top: 1px solid var(--b1);
+  background: var(--s2);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 48px;
+}
+
+.eyNum {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.24em;
+  color: var(--dim2);
+  border: 1px solid var(--b1);
+  padding: 3px 7px;
+}
+
+.eyLbl {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.eyLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--b1), transparent);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.statsStrip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--b2);
+}
+
+.statVal {
+  font-family: var(--mono);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 500;
+  color: var(--orange);
+  letter-spacing: -0.01em;
+}
+
+.statLbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--dim);
+  white-space: pre-line;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.prose {
+  padding-top: 4px;
+}
+
+.prose p {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.prose strong {
+  color: var(--bright);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .section {
+    padding: 60px 20px;
+  }
+}
