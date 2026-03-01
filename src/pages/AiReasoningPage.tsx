@@ -9,11 +9,11 @@ import { DataBracket } from '../components/fui/primitives/DataBracket'
 import styles from './AiReasoningPage.module.css'
 
 const CHAPTERS: Chapter[] = [
-  { id: 'question',   number: '01', label: 'QUESTION' },
+  { id: 'question',   number: '01', label: 'THE QUESTION' },
   { id: 'framework',  number: '02', label: 'FRAMEWORK' },
   { id: 'schema',     number: '03', label: 'SCHEMA' },
   { id: 'artifact',   number: '04', label: 'ARTIFACT' },
-  { id: 'grounding',  number: '05', label: 'GROUNDING' },
+  { id: 'temporal',   number: '05', label: 'HARD PROBLEM' },
   { id: 'connection', number: '06', label: 'CONNECTION' },
 ]
 
@@ -258,13 +258,13 @@ export default function AiReasoningPage() {
           </div>
         </section>
 
-        {/* ── Chapter 05: GROUNDING ── */}
-        <section id="grounding" data-chapter className={styles.chapter}>
+        {/* ── Chapter 05: HARD PROBLEM ── */}
+        <section id="temporal" data-chapter className={styles.chapter}>
           <div className={styles.chapterHeader}>
             <DiamondMark size={6} stroke="rgba(0,212,255,0.6)" />
             <span className={styles.chapterNumber}>05</span>
             <InlineSep />
-            <h2 className={styles.chapterTitle}>GROUNDING</h2>
+            <h2 className={styles.chapterTitle}>HARD PROBLEM</h2>
           </div>
           <div className={styles.chapterBody}>
 
