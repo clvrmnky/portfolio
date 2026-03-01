@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { RecordHeader } from '../assembled/RecordHeader'
 import { MetricReadout } from '../assembled/MetricReadout'
 import { TargetAssembly } from '../assembled/TargetAssembly'
@@ -14,7 +15,7 @@ interface Props {
 }
 
 export function CaseCard({ cs, revealDelay = 0 }: Props) {
-  const cardRef = useRef<HTMLDivElement>(null)
+  const cardRef = useRef<HTMLAnchorElement>(null)
   const [dims, setDims] = useState({ w: 360, h: 320 })
 
   useEffect(() => {
@@ -31,8 +32,9 @@ export function CaseCard({ cs, revealDelay = 0 }: Props) {
   }, [])
 
   return (
-    <div
+    <Link
       ref={cardRef}
+      to={cs.ctaHref}
       className={`${styles.card} ${cs.featured ? styles.featured : ''}`}
       style={{ '--reveal-delay': `${revealDelay}ms` } as React.CSSProperties}
     >
@@ -96,10 +98,10 @@ export function CaseCard({ cs, revealDelay = 0 }: Props) {
         <div className={styles.footerRule}>
           <MeasurementLine width={60} capHeight={5} />
         </div>
-        <a href={cs.ctaHref} className={styles.cta}>
+        <span className={styles.cta}>
           {cs.ctaLabel}
-        </a>
+        </span>
       </div>
-    </div>
+    </Link>
   )
 }
